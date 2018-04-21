@@ -6,39 +6,39 @@
  * 
  */
 
-namespace Ladder
+namespace ToiletSeat
 {
     class MainClass
     {
         public static void Main(string[] args)
         {
-            String data = Console.ReadLine();
+            String input = Console.ReadLine();
 
-            int userPreferencesPolicy = data[0] == data[1] ? 0 : 1; // should first user adjust on entering?
-            int alwaysUpPolicy = (data[1] == 'U' ? 0 : 1) + userPreferencesPolicy;  // should first user adjust on leave?
-            int alwaysDownPolicy = (data[1] == 'D' ? 0 : 1) + userPreferencesPolicy; // should first user adjust on leave?
+            int UserPrefferedPosition = input[0] == input[1] ? 0 : 1; // should first user adjust on entering?
+            int UP = (input[1] == 'U' ? 0 : 1) + UserPrefferedPosition;  // should first user adjust on leave?
+            int DOWN = (input[1] == 'D' ? 0 : 1) + UserPrefferedPosition; // should first user adjust on leave?
 
-            for (int i = 2; i < data.Length; i++)
+            for (int i = 2; i < input.Length; i++)
             {
-                if (data[i - 1] != data[i])
+                if (input[i - 1] != input[i])
                 {
-                    userPreferencesPolicy++;
+                    UserPrefferedPosition++;
                 }
-                if (data[i] == 'U')
+                if (input[i] == 'U')
                 {
-                    alwaysDownPolicy++; // on enter
-                    alwaysDownPolicy++; // on leave
+                    DOWN++; // on enter
+                    DOWN++; // on leave
                 }
-                else if (data[i] == 'D')
+                else if (input[i] == 'D')
                 {
-                    alwaysUpPolicy++; // on enter
-                    alwaysUpPolicy++; // on leave
+                    UP++; // on enter
+                    UP++; // on leave
                 }
             }
 
-            Console.WriteLine(alwaysUpPolicy);
-            Console.WriteLine(alwaysDownPolicy);
-            Console.WriteLine(userPreferencesPolicy);
+            Console.WriteLine(UP);
+            Console.WriteLine(DOWN);
+            Console.WriteLine(UserPrefferedPosition);
         }
 
     }
